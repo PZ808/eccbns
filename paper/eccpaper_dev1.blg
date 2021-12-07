@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.6)
+The top-level auxiliary file: eccpaper_dev1.aux
+The style file: apsrev.bst
+Database file #1: eccpaper.bib
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+You've used 39 entries,
+            3411 wiz_defined-function locations,
+            1380 strings with 16632 characters,
+and the built_in function-call counts, 24017 in all, are:
+= -- 1420
+> -- 719
+< -- 109
++ -- 563
+- -- 176
+* -- 3120
+:= -- 2703
+add.period$ -- 39
+call.type$ -- 39
+change.case$ -- 161
+chr.to.int$ -- 42
+cite$ -- 43
+duplicate$ -- 2187
+empty$ -- 2094
+format.name$ -- 465
+if$ -- 4570
+int.to.chr$ -- 4
+int.to.str$ -- 40
+missing$ -- 326
+newline$ -- 132
+num.names$ -- 111
+pop$ -- 637
+preamble$ -- 1
+purify$ -- 156
+quote$ -- 0
+skip$ -- 918
+stack$ -- 0
+substring$ -- 831
+swap$ -- 1604
+text.length$ -- 84
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 230
+warning$ -- 0
+while$ -- 101
+width$ -- 0
+write$ -- 392

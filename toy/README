@@ -1,0 +1,203 @@
+
+ Instructions for reproducing the numerical results
+ given in "Circular Templates as Matched Filters 
+ for Eccentric Binary Signals" (Summer Research 2008) 
+
+ The final results can be found in the file 
+ /eccbns/toy/results/zero_pn_overlaps/FF_data/gold_match_results.txt
+
+ 	Procedural summary of the 0-pN analysis:
+ 
+	Step 1:
+	Numerically evolve equations 6, 8, and 9 
+	of Martel & Poisson Phys. Rev D 60, 124008
+	using GSL rkf45 at double precision (gsl_solver),
+	NR bsstep at double precision (nr_solver_double),
+	and NR bsstep physical (nr_solver_physical). 
+
+	Step 1:
+	Run bash scripts
+ 	gsl_durations.sh, nr_durations.sh, nr_physical_durations.sh
+	to compute the durations of the waveforms for the three
+	different solvers. 
+	
+	Step 3:
+    Run the bash script convert_dat.sh to convert the h(t) 
+	data from *.txt format to *.dat format. This script  
+	also adds the dx values needed by QM to the top of the
+	files. 
+
+	Step 4:
+	Run the bash script ecc_golden_mc.sh to execute the python script 
+	ecc_golden_sa.py over all the *dat files. This computes the fitting factor,
+	opt. chirpmass, and the ratio of the optimum chirp mas to the actual one.
+	The results are output to the text file golmatch_results.txt 
+	
+
+ 	The source code for the eccentric binaries: 
+ 
+  1. eccbns_ode_system.c 
+  	Sets up ODEs defining the orbital elements of the 
+  	eccentric binary system. These equations are common to 
+	double precision solvers.
+
+  2. eccbns_physical_ode_system.c
+	Sets up the ODE system to run in "Eric" mode; i.e, to
+ 	to reproduce the reslts of Eric Possion's Code. This code require
+	different scaling (see below).
+
+  3. gsl_solver.c                 
+    Doule precision driver for eccbns_ode_system.c which uses GSL's
+	rkf-45 stepping algorithm.
+    
+	OUTPUT (order preserved):
+	 t, t * t_scale, phase, p, e, h_plus, h_cross, h 
+
+  4. nr_solver.c 
+	Single precision driver for eccbns_ode_system.c which uses NR's
+	bsstep stepping alorithm.
+    
+  5. nr_solver_double.c
+    Double precision driver for eccbns_ode_system.c which uses NR's
+	bsstep stepping algorithm.
+  
+  6. no_ecc_evolution.c
+    Computes the orbital elements for zero eccentricity
+	from the analytic solution. The cut-off needs to be 
+	done more accurately with a fiducial frequency. 
+
+	Toy ODE system:
+--------------------
+
+  To run the toy ode system:
+
+./gsl_solver --t-min 0.0 --t-max 15.0 --t-step 5.0 \
+  --accuracy 1.0e-03  --solver-type rkf45 \
+  --ode-system toy
+
+./nr_solver --t-min 0.0 --t-max 20.0 --t-step 5.0 \
+  --accuracy 1.0e-03  --solver-type bsstep \
+  --ode-system toy 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ Command line arugments needed to run the eccentric ODE numerical solvers
+-------------------------------------------------------------------------                                                                   
+
+** NB: Do not change the values of t-step, t-scale, t-min, or f_init. **
+
+			GSL Runge-Kutta Fehlberg 4-5 solver
+--------------------------------------------
+
+./gsl_solver --t-min 0.0 --t-max 256.0 \
+  --t-step 0.000244140625 --t-scale 4.92549095e-06 \
+  --accuracy 1.0e-16  --e-init 0.5 \
+  --mass-1 1.4 --mass-2 1.4 \
+  --solver-type rkf45 --f-init 13.3333 \
+  --ode-system eccbns
+
+
+** NB: Do not change the values of t-step, t-scale, t-min, or f_init.
+     
+			NR Bulirsch-Stoer 
+------------------------------------------
+
+  1. To Run the single precision code: 
+
+./nr_solver --t-min 0.0 --t-max 256.0 \
+  --t-step 0.000244140625 --t-scale 4.92549095e-06 \
+  --accuracy 1.0e-06  --e-init 0.5 --mass-1 1.4 --mass-2 1.4 \
+  --solver-type bsstep --f-init 13.3333 \
+  --ode-system eccbns
+
+  2. To Run the double precision code: 
+
+./nr_solver_double --t-min 0.0 --t-max 256.0 \
+	--t-step 0.000244140625 --t-scale 4.92549095e-06 \
+	--accuracy 1.0e-16 --e-init 0.5 --mass-1 1.4 --mass--2 1.4 \
+	--solver-type bsstep ---f-init 13.3333 \
+	--ode-system eccbns 
+
+
+  3. To replicate Eric's single precision 
+   	 results we run NR solver in "physical-mode":
+
+./nr_solver --t-min 0.0 --t-max 2.6219997406005859e+01 \
+  --t-step 5.2441045409068465e-04 --t-scale 1.0 \
+  --accuracy 1.0e-06  --e-init 0.5 --mass-1 1.4 --mass-2 1.4 \
+  --solver-type bsstep --f-init 13.3333 \
+  --ode-system eccbns_physical \
+  --h-guess 1.0e-03 \
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ Description of precisions used in the evolutions: 
+----------------------------------------------------
+
+ The input parameter --accuracy specifies the tolerance eps 	
+
+ To obtain the results (Summmer 2008) use the following values
+
+ NR Single Precision:
+ - ran nr_solver_physical at eps = 1.0e-06 
+   - N.B eps_min = 1.0e-07  (anything smaller causes underflow)   	
+
+ NR Double Precision:
+ - ran nr_solver_double at eps = 1.0e-16 
+    - lower values of eps have negligible effects on the end results
+
+ GSL (double precision):
+ - ran gsl_solver at eps = 1.0e-16
+    - lower values of eps have negligible effects on the end results
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+ 			Python Code for Computing the Fitting Factors:
+     ------------------------------------------------
+ qm.py
+ 
+  	description: computes the overlaps (maximized over t_c and phi_c)
+
+ ecc_FF.py
+
+  	description: computes the FF 
+  	input: *.dat file containing h(t) values, mass1, mass2.
+  	output: prints to file FF.txt the numerical value of the FF.
+  	NB: used in conjuction with bash scrip ecc_FF_sa.sh
+
+
+ ecc_golden_sa.py
+
+  	description: computes the FF, optimum chirp mass, and optimum mass ratio 
+  	input: *.dat file containing h(t) values, mass1, mass2.
+  	output: prints to file gold_match_sa.txt the numerical value of 
+         	the optimum chirpmass, optimum mass ratio, FF
+  	NB: used in conjuction with bash script golden_mc.sh. 
+					
+ ecc_opt_mc.py
+ 	
+	description:
+	input: takes input from file
+	output:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+						bash scripts
+           ----------------
+		
+ wave_args.sh, wave_args_doub.sh, wave_args_phy.sh 
+
+  	automates running the solver for the values of
+  	mass1, mass2, and e_init needed to recreate tables 1,2 and 3 
+  	in Martel and Poisson (MP).
+
+ gsl_durations.sh, nr_durations.sh, nr_physical_durations.sh
+  	strips the last line of data from each output file and write to
+  	file the column contaning the final times. 
+		
+ golden_mc.sh 
+	automates the python script ecc_golden_sa.py to run over
+	all the gsl and nr files.
+
+  ecc_FF.py
+   automates computing the FF only.
+	

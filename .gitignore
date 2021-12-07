@@ -48,3 +48,21 @@ Thumbs.db
 *.mov
 *.wmv
 
+# user defined files
+*.eps
+*.pdf
+*.aux
+*.ps
+*.dvi
+*.log
+*.bib
+*.bbl
+*.txt
+*.sty
+*.dat
+*.tex
+*.out
+*.png
+*.blg
+*.swp
+*.bz2

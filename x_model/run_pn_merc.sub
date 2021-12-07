@@ -1,0 +1,12 @@
+# $Id: run_pn_merc.sub,v 1.4 2009/03/01 22:54:23 pzimmerman Exp $ 
+universe = standard
+executable = /home/pzimmerman/eccbns/x_model/pn_merc
+#notify_user = pjzimmer@syr.edu
+#notification = Always
+output = pn_merc.$(cluster).$(process).out
+error = pn_merc.$(cluster).$(process).err
+log = pn_merc.$(cluster).log
+# one orbital period = 7,600,543.8048:
+#arguments = 0.0 7600543.805 0.0 0.000001 0.000001 1.0 86400.0  
+arguments = 0.0 3155760000.0 0.0 0.000001 1.0 10000000.0
+queue

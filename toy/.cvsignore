@@ -1,0 +1,12 @@
+*.txt
+*.dat
+*.o
+*.so
+convert_dat.sh
+nr_solver
+nr_solver_double
+gsl_solver
+ecc_chirpmass
+analytic_soln
+no_ecc_evolution
+

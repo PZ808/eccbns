@@ -1,0 +1,10 @@
+# $Id: condor_run_x_model.sub,v 1.1 2009/04/02 13:43:28 pzimmerman Exp $ 
+universe = standard
+executable = /home/pzimmerman/eccbns/x_model/run_x_model_sim
+#notify_user = pjzimmer@syr.edu
+#notification = Always
+output = run_x_model_sim.$(cluster).$(process).out
+error = run_x_model_sim.$(cluster).$(process).err
+log = run_x_model_sim.$(cluster).log
+arguments = 1.0 1.0 1.4 1.4 30.0 0.0 0.0 0.000001 256. 1.0
+queue

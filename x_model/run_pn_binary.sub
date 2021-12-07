@@ -1,0 +1,14 @@
+# $Id: run_pn_binary.sub,v 1.5 2009/04/02 13:43:28 pzimmerman Exp $ 
+universe = standard
+executable = /home/pzimmerman/eccbns/x_model/pn_evolve
+#notify_user = pjzimmer@syr.edu
+#notification = Always
+output = pn_evolve.$(cluster).$(process).out
+error = pn_evolve.$(cluster).$(process).err
+log = pn_evolve.$(cluster).log
+#Run a (1.4,1.4,0.6) a = 1e6 meter system for 10 orbits 
+#and hopefully see 60 degrees of precession  
+arguments = 1.4 1.4 0.0 3.30 0.0 0.000001 256. 1.0
+#arguments = 1.4 11.0 0.0 10.36 0.0 0.000001 256. 1.0
+#arguments = 1.4 10.0 0.0 51.0785 0.0 0.000001 256.0 1.0
+queue

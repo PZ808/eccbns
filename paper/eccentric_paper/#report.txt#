@@ -1,0 +1,182 @@
+----------------------------------------------------------------------
+Report of the Referee  -- DH10751/Brown
+----------------------------------------------------------------------
+
+=======================================================================
+"The Effect of Eccentricity on Searches for Gravitational-Waves from
+Coalescing Compact Binaries in Ground-based Detectors" presents a more
+thorough assessment of the ability of existing searches of LIGO data
+to detect signals from coalescing binaries in moderately eccentric
+orbits than is found in previous analyses. Compact binaries with
+modest residual orbital eccentricity when the orbital frequency enters
+the LIGO band plausibly form a substantial fraction of the population
+of detectable compact binary systems, so it is important to understand
+the ability of current searches to detect such systems. Furthermore,
+advanced LIGO, which is currently under construction, will have
+sensitivity at lower frequencies and searches will be more susceptible
+to the effects of orbital eccentricity on the gravitational waveform;
+this paper makes a first effort to understand the degree to which the
+current searches will need to be modified for future searches of
+Advanced LIGO data. Therefore, I recommend that this paper be
+published in Physical Review D.
+=======================================================================
+=======================================================================
+We thank the referee for their careful reading of the paper. Our
+responses to their comments are below.
+=======================================================================
+
+> The following minor comments are advisory.
+
+> Section I, first paragraph: some transitions between sentences were
+> somewhat confusing. I suggest:
+
+> "Formation mechanisms..." -> "Alternative formation mechanisms..."
+
+Now reads "Alternative formation mechanisms..." as suggested.
+
+> "Most template families..." -> "However, most template families..."
+
+Now reads "However, most template families..." as suggested.
+
+> also, I suggest using the word "slowly" or "secularly" rather than
+> "adiabatically" since adiabatic implies no energy loss from the
+> system, which is incompatible with the orbital decay (and adiabatic
+> does not imply slow at all).
+  
+We agree the evolution is not adiabatic, as energy is being radiated away
+from the system in GWs.  We have changed adiabatically to secularly.
+                                                         
+> Section II, first sentence: omit extra word "with".
+
+The extra "with" has been removed. 
+
+> Section IIB, last sentence: at this stage, no mention has been made
+> that you are considering only the m=2 mode, so it is not clear what
+> you mean by terminating the waveform at the Schwarzschild innermost
+> stable circular orbit frequency?or, at least, it is clear what this
+> means in terms of the orbital frequency, but what is given is the
+> corresponding gravitational wave frequency of the m=2 mode.
+
+We have moved this sentence to section 2d, where it follows the
+sentence stating we are only using the dominant harmonic for our waveforms.
+
+> Section IID, Eq. (15a): I found the lack of an oscillatory factor
+> (something like cos 2 phi) in the term with the factor sin^2 iota
+> somewhat surprising, especially given the sentence stating that you
+> are presenting the dominant harmonic only. Perhaps this is worth a
+> clarifying statement?
+
+This is a general expression for the leading order quadrupolar waveform.  If
+the orbit is circular, the \dot{r} = 0, and \frac{Gm}{r} = r^2 \dot\phi^2 from
+the centripetal accel.  With these simplifications, the \sin^2 \iota piece
+vanishes and it reduces to the more often cited circular h_+ expression.     
+As a double check, we have carefully gone through the derivation given in Gopakumar and Iyer PRD
+65 084011 (2002) and were able to reproduce the non-oscillatory part by
+factorizing the expanded form of Eq 2.4a therein.  
+
+> Section IID, last sentence: the text gives two major effects induced
+> by eccentricity (amplitude modulation and shorter signal) but the
+> caption in Fig. 1 states three major effects (the previous two plus
+> overall increase in amplitude).
+
+The text has been changed to be consistent with figure caption.
+
+> Figure 1: suggest making axes the same scale.
+
+The axes have been re-scaled such that they are the same for both panels.
+
+> Section III, Eq. (21): in the first equality the integral is clearly
+> real-valued, so the extra Re is unnecessary. Also, both integrals are
+> over positive frequencies so you could write S_n(f) rather than
+> S_n(|f|).
+
+We have removed the Re from the 1st integral of Eq. (21) and the |f|'s have
+been changed to f in denominators. 
+
+> Section III, second paragraph: the component mass ranges are between 1
+> solar mass and 34 solar masses, not 1 solar mass and 35 solar masses.
+
+This now reads  1 \leq m_1,\,m_2 \leq 34 M_\odot.
+
+> Section III, Eq. (26) and (27): these analytic fits to the LIGO noise
+> curve cannot be true: they are orders of magnitude wrong, and do not
+> have the correct units. This will not affect the results since it is
+> only the shape of the spectrum and not its overall scale that enters
+> into the analysis, but you might as well get the magnitude and units
+> right.
+
+In our code we had a dynamic range scaling factor in the PSDs.
+We forgot to divide this out when writing the paper. 
+This has been fixed and units for frequency have been added to the divisors of
+$f$.   
+
+> Figure 2 caption: I found the explanation of why the overlap for
+> higher mass systems are less affected by eccentricity confusing. What
+> is happening is that the higher mass systems have fewer cycles in the
+> LIGO sensitivity band, and it is easier therefore easier to
+> phase-match these fewer cycles of the template with some cycles
+> eccentric binary waveform via a relative shift in coalescence time.
+
+You are correct.  In the revised caption, we emphasize the that higher mass
+system are shorter and therefore have less time to lose phase coherence with
+the eccentric signals.
+
+> Section IV, second paragraph: again, I think the argument is confusing
+> here. (It could almost be read as saying that larger eccentricity
+> yields shorter signals, which in turn should yield higher overlaps!)
+> Also perhaps use the word "templates" rather than "waveforms" when
+> describing the TaylorF2 waveforms.
+
+This has been revised to read:
+"Notice that the overlap values increase with
+increasing mass. This is because higher mass systems spend less time in
+the detectors band and therefor have less time to de-phase with the
+Taylor F2 templates."  
+
+> Section IV, third paragraph: the mass range for the component masses
+> is not specified here, just for the total mass. Also, change the
+> abbreviation "c.f." ("carried forward") to the intended "cf."
+> (?compare with?).
+
+The total mass spans 2 \leq M \leq 15, not 1 solar mass to 15 solar masses. 
+This has been corrected.
+The c.f. has been changed to cf.
+
+> Figures 4 and 5: no explanation is given about why the curves for M =
+> 6.4 solar masses and M = 10 solar masses cross over (or, put another
+> way, why is the highest overlap achieved for the zero-eccentricity M =
+> 6.4 solar mass system?), but this is a fairly striking feature.
+
+We believe this is due to differences in the order of the PN approximations used to model
+the waveforms and the templates. 
+The lower overlap for M=10.0 solar masses at zero eccentricity is
+because it is more massive and PN effects scale with the mass. At around
+e_0 = 0.2, the 6.4 Msun waveform gets worse because it is accumalating more
+GW cycles which results in the loss of phase coherence.
+This explanation has been added to the text.
+
+> Section IV, generally: why are the component masses collapsed into the
+> total mass parameter rather than the chirp mass parameter? Wouldn't
+> the chirp mass yield the smallest variation between the highest,
+> lowest, and mean values of the effective fitting factor, at least at
+> zero eccentricity?
+
+Originally, we plotted chirp mass against initial eccentricity, but found that
+the contour lines were jagged due to the strong dependence of both chirp mass
+and eccentricity on the symmetric mass ratio \eta. 
+The jaggedness of the isocontours affected the readability of the results so we
+decided to go with total mass instead.
+The problem is that we are
+trying to plot a 3-d parameter space on a 2-d plot.  To deal with this and to illustrate the effect
+of mass ratio we plot the best, mean, and worst fitting factor.  
+
+ 
+> Figures 6 and 7: it is very difficult to read the black-on-dark-grey
+> contour labels on my greyscale printout of the paper. I suggest white
+> labels (and larger ones).
+
+The labels have been enlarged and set inside small boxes to increase the contrast.
+
+> Section V: change "et. al." to "et al.".
+
+We have made this change.

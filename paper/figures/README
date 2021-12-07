@@ -1,0 +1,24 @@
+Correct Figures (post bug-fix):
+
+Wave
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+wave.pdf  
+Gw1p4and10p0.eps
+
+Overlaps 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Initial Ligo Noise Curve
+-----------------------------
+olaps_T4_2pn.eps 
+olaps_self.eps
+olaps_init_3p5_lsqFit.eps
+
+Advanced Ligo Noise Curve
+-----------------------------
+olaps_adv_3p5_lsqFit.eps
+
+
+Initial LIGO Banksims
+-----------------------------
+fig_3p5_Mt_CL_NoBar_fix02.eps 
+

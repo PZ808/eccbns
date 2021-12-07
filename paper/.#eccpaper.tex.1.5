@@ -1,0 +1,855 @@
+%\documentclass[aps,prd,floats,floatfix,twocolumn,nofootinbib,amssymb,amsmath]{revtex4}
+\documentclass[aps,prd,floats,floatfix,preprint,nofootinbib,amssymb,amsmath]{revtex4}
+\usepackage{amsmath,amsfonts}
+%\usepackage{asymptote}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{bm}
+
+% DAB defined commands
+\renewcommand{\Re}{\mathrm{Re}}
+\newcommand{\third}{{\scriptstyle\frac{1}{3}}}
+\newcommand{\twothirds}{{\scriptstyle\frac{2}{3}}}
+\newcommand{\half}{{\scriptstyle\frac{1}{2}}}
+\newcommand{\fourth}{{\scriptstyle\frac{1}{4}}}
+\newcommand{\fifth}{{\scriptstyle\frac{1}{5}}}
+\newcommand{\sixth}{{\scriptstyle\frac{1}{6}}}
+\newcommand{\eighth}{{\scriptstyle\frac{1}{8}}}
+\newcommand{\sixteenth}{{\scriptstyle\frac{1}{16}}}
+\newcommand{\thirtysecond}{{\scriptstyle\frac{1}{32}}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\eeqa}{\end{eqnarray}}
+\newcommand{\Lie}{\mathcal{L}}
+\newcommand{\three}[1]{{^{(3)}} #1 }
+% PJZ defined commands
+\newcommand{\vs}{{\hat s}}
+\newcommand{\vh}{{\hat h}}
+\newcommand{\bra}{\langle}
+\newcommand{\ket}{\rangle}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\Msun}{M_{\odot}}
+\newcommand{\ud}{\,\mathrm{d}}
+\newcommand{\baln}{\begin{align}}
+\newcommand{\ealn}{\end{align}}
+\newcommand{\ecc}{eccentricity }
+\newcommand{\bs}{\begin{subequations}}
+\newcommand{\es}{\end{subequations}} 
+\def\no{\nonumber \\}
+\def\le{\biggl (}
+\def\ri{\biggr )}
+\def\pd{\partial }
+\def\vta{\vartheta^a }
+\def\vtb{\vartheta^b } 
+%\usepackage[usenames]{color}
+% So you can say \red{this is red} instead of {\textcolor{red} this is red}
+%\newcommand{\red}{\textcolor{red}}
+%\newcommand{\blue}{\textcolor{blue}}
+%\newcommand{\green}{\textcolor{OliveGreen}}
+%\newcommand{\orange}{\textcolor{BurntOrange}}
+
+
+\begin{document}                                   
+
+\title{The Effect of Eccentricity on Matched Filter Based Gravitational-Wave Searches} 
+
+\author{Duncan A. Brown${}^1$, Peter J. Zimmerman${}^1$}
+
+\affiliation{${}^1$ Department of Physics, Syracuse University,
+Syracuse, NY 13244}
+
+\begin{abstract}
+We discuss the effect of residual eccentricity in searches for compact
+binary inspiral signals. 
+\end{abstract}
+
+\date{\today}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Introduction
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{s:Introduction}  
+
+The Laser Interferometer Gravitational Wave Observatory (LIGO)
+\cite{Barish:1999vh, 0264-9381-23-19-S03} 
+has collected one year of coincident data at design sensitivity
+\cite{Abbott:2009tt}, and upgrades to improve detector
+sensitivity by a factor of two (and ultimately 10) are underway
+\cite{0264-9381-26-11-114013}.  
+Insprirals of compact binary systems have the potential to be a
+promising source of gravitational waves for LIGO.
+The search for inspiral signals uses the method of matched-filtering, in
+which the time-series of the detector is cross-correlated against a
+set of theoretical template waveforms.  The utility of this technique
+rests on how well the template waveforms represent the actual signal, 
+which has been a major impetus to calculate accurate waveforms.
+Forthcoming results from numerical relativity are now being used to
+compare methods for computing the waveform templates 
+\cite{Boyle:2007ft,Boyle:2009dg,Buonanno:2009qa,Damour:2008te}. 
+
+  Most template families, including those used by LIGO to search for
+inspiral signals, make use of the \emph{quasi-circular} approximation. In this
+scheme the binary system evolves adiabatically through a
+sequence of circular orbits 
+\cite{Damour:2000zb, Blanchet:2006zz, Martel:1999tm}. In an adiabatic inspiral,
+the secular effects caused by emission of gravitational waves occur over
+a time-scale much greater than the orbital time-scale.  For binaries
+having evolved through the typical main sequence evolution scenario, the
+radiation reaction will cause them to circularize by the time the
+frequency of their gravitational waves enters the frequency band of the
+detector \cite{Martel:1999tm, Peters:1964zz, Peters:1963ux}.  
+%The effect of radiation reaction on the orbital elements was first investigated  .  
+%The construction of accurate waveforms depends critically on an accurate %model of the phase evolution of evolution. 
+%The of eccentric binaries under gravitational radiation was
+%first calculated by Peters and Mathews \cite{Peters:1964zz,
+%Peters:1963ux}. 
+
+  Although most binaries are expected to have circularized before
+they enter the band of the detector, there are scenarios that
+predict the existence of residual eccentricities
+\cite{O'Leary:2008xt,Wen:2002km}.  One such model predicts that black
+hole (BH) binaries formed through the scattering of stellar mass black holes 
+off a supermassive black hole (SMBH) occupying the center of a galaxy may form
+with high eccentricities (90\% with $e_0 > 0.9$) \cite{O'Leary:2008xt}. The binary forms when two
+individual black holes radiate enough energy during the encounter to
+become a bound system. Estimates given in Ref.~\cite{O'Leary:2008xt}
+suggest binaries formed in this manner may have event
+rates of 1-100 yr$^{-1}$ for Advanced LIGO. In the dense central region
+of globular cluster, binary-binary interactions may result in the
+formation of a stable \emph{hierarchical triple}. If the the orbital planes are
+highly inclined with respect to one another, Kozai resonance increase
+the eccentricity of inner binary. It has been estimated that
+30\% of these systems will have eccentricities \(e >0.1\) when they
+enter the advanced LIGO frequency band ($\sim 10$ Hz) \cite{Wen:2002km}.  
+
+ In recent years there has been a major effort to calculate the phase
+evolution of post-Newtonian eccentric binaries to increasingly higher 
+order \cite{Gopakumar:1997bs, Damour:2004bz, Konigsdorffer:2006zt}. 
+The use of the method of variation of constants, a well known technique in celestial
+mechanics, has provided new models which go beyond the adiabatic
+approximation to include conservative post-Newtonian effects in the phase evolution \cite{Damour:2004bz}.  
+The 3PN conservative contributions to phase evolution have been
+derived in the quasi-Keplerian parameterization
+\cite{Memmesheimer:2004cv} and the 3PN secular contribution should be
+forthcoming given that the progress in flux calculations
+\cite{Arun:2007sg}. 
+  
+  Despite the advancement in the phasing of eccentric binaries,
+little has been done to investigate eccentric waveforms from a data analysis
+perspective.  We expect this is due in large part to the conclusions of Martel
+and Poisson \cite{Martel:1999tm}, who concluded that circular templates
+were effective at capturing eccentric signals from sources evolving
+adiabatically at leading order in radiation reaction.  However, their
+results recently been challenged on the basis that the neglected the
+conservative contributions to the orbital phase \cite{Tessmer:2007jg}.
+In this paper we investigate the ability of circular SPA templates
+to detect a set eccentric post-Newtonian waveforms which include
+3PN conservative dynamics and agree with numerical simulations.
+Our purpose is to quantify the utility of circular stationary phase 
+templates as matched filters for gravitational wave signals emitted from 
+binaries evolving along eccentric orbits
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section: Eccentric Post-Newtonian Waveforms
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Eccentric Post-Newtonian Waveforms}
+\label{s:PostNewtonian}
+
+% Sub-Section: Conservative Dynamics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Conservative post-Newtonian Dynamics}
+\label{s:ConservativeDynamics}
+             
+% Newtonian
+% Orbital precession does not occur in the Newtonian evolution model.
+The post-Newtonian model can be understood more easily if we first
+consider the evolution of two point masses $m_1$ and $m_2$ in the purely
+Newtonian case.  In the Newtonian case, conservative of energy $E$ and
+angular momentum $J$ dictate the evolution of the orbital elements.
+We define the \emph{mean motion} $n$ in terms of the orbital period $P$, \( n =
+\frac{2 \pi}{P} \).  In the case of elliptic motion ($0<e<1$) $n$ is
+simply the frequency, such that \( n = \sqrt{M/a^3} \) \footnote{We work
+in units with \(G=c=1\)}. In general, the orbital eccentricity $e$ and the mean
+motion $n$ alone do not suffice to determine the dynamics. To
+parameterize our equations we introduce the eccentric anomaly $u$. When written in
+terms of $u$ the relative orbital separation $r$ and the angular
+frequency $\dot{\phi}$ take the form
+%
+\begin{eqnarray}
+  r &=& a \left[1 - e \cos u \right], \\
+    \dot{\phi} &=& \frac{n \sqrt{1 - e^2}}{{\left[1 - e \cos u
+    \right]}^2}.
+  %\phi &=& 2 \arctan \left[{\left(\frac{1+e}{1-e} \right)}^{1/2}
+  %\tan \frac{u}{2} \right]
+\end{eqnarray}
+%
+To complete the dynamical system we relate the eccentric anomaly to the
+mean motion $n$ via the Classical Kepler Equation 
+%
+\beq
+  l = u - e \sin u, \label{ClassicalKepler}
+\eeq
+%
+where the \emph{mean anomaly} $l$ is given by \( \dot{l} = n \).
+Recall that in the conservative case, $n$ is time-independent, such that
+\( l = n\,(t - t_0) \).  These equations form the Keplerian
+parameterization of a Newtonian orbit. Given initial conditions \(
+\phi_0 \equiv \phi(t_0) \) and \( l_0 \equiv l(t_0) \) along with
+numerical values for $e$ and $u$ we can compute the trajectories of the
+particles at any time \(t > t_0 \) by root finding for $u$.  
+
+  The post-Newtonian dynamics of a system are said to be conservative if they
+the respect conservation of energy and angular momentum. Using the
+relations given in Ref.~\cite{Memmesheimer:2004cv} for $n$ and $e$ in
+terms of $E$ and $J$, one can derive 3PN qusi-keplerian equations of
+motion by introducing three eccentricities $e_t,\,e_r$ and $e_{\phi}$,
+to account for the variations in $t$, $r$, and $\phi$. The addition of
+higher order conservative PN corrections lead a precession of the
+periapsis.  We let $\Delta \phi$ represent the angle of precession
+during one period P.  The angle swept out over consecutive periapsis
+passages is defined 
+%
+\beq
+  \omega = \frac{2\pi + \Delta\phi}{P} 
+\eeq
+%
+\cite{Arun:2007rg, Arun:2007sg, Hinder:2008kv}. We note that \( \omega
+\) is a constant in the absence of radiation reaction.
+
+We employ post-Newtonian formalism outlined in Ref.~\cite{Hinder:2008kv}.
+In this model, all post-Newtonian quantities are given in terms of a orbital
+related variable $x = (M\omega)^{2/3}$ and the time eccentricity $e_t$.
+ 
+ The evolution equations in the conservative dynamics \cite{Hinder:2008kv} take the abbreviated form
+%
+\beqa
+  \frac{r}{M} &=& \left(1-e_t \cos u \right)x^{-1} 
+    + r_{1\mathrm{PN}} + r_{2\mathrm{PN}}x \no
+    & + & r_{3\mathrm{PN}} x^2 + \mathcal{O}(x^{3}), \\
+%
+  M\dot{\phi} &=& \frac{\sqrt{1-e_t^2}}{{\left(1-e_t \cos u \right)}^2}x^{3/2} 
+    + \dot{\phi}_{1\mathrm{PN}}x^{5/2} + \dot{\phi}_{2\mathrm{PN}} x^{7/2} \no
+    & + & \dot{ \phi }_{3 \mathrm{PN}} x^{ 5/2 } + \mathcal{O}(x^{11/2}), \\
+%
+l & = & u - e_t \sin u + l_{2\mathrm{PN}}x^2 +
+l_{ 3\mathrm{PN} } x^3 + \mathcal{O}(x^{4}), \label{PnKepler} \\
+%
+  M\dot{l} & = &  Mn = x^{3/2} + n_{1\mathrm{PN}}x^{5/2} +
+    n_{2\mathrm{PN}}x^{7/2} \label{MeanMotion} \\
+    & + & n_{3\mathrm{PN}}x^{9/2} + \mathcal{O}(x^{11/2}).
+\eeqa
+%
+The full expressions for the PN coefficients are given in the appendix
+of Ref.~\cite{Hinder:2008kv}. We note that the PN coefficients
+$r_{\mathrm{PN}},\,\dot{\phi}_{\mathrm{PN}}, \ldots $ are functions of both $e_t$
+and $u$, whereas $n$ depends on $e_t$ alone.  To describe the motion of
+the binary the conservative dynamics, we integrate \eqref{MeanMotion}
+and numerically solve \eqref{PnKepler} for $u$ at each time step $t$. 
+
+% Sub-Section: Reactive Dynamics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Radiative post-Newtonian Dynamics}
+\label{s:ReactiveDynamics}
+
+  The radiative post-Newtonian dynamics are used to described the
+evolution of the system over timescales during which angular momentum
+and energy are carried away for the system by gravitation radiation.
+%The standard way to 
+The time dependence of $E$ and $J$ implies that $n$ and $e_t$ are
+no longer integrals of the motion. Their time variation
+contributes to the secular variations in $r$ and $\dot{\phi}$
+Thus, the equations for the coordinate motion
+of the binary must be extended into the non-conservative regime to include the secular effects on the
+orbital elements $\dot{\phi}$, $r$, and $l$ entering through the
+variable $x$ and $e_t$.  The 2PN equations describing the radiative
+dynamics read
+%
+\footnote{We adhere to a convention
+in the GW literature, where the radiative PN order is defined relative
+the order at which radiation reaction occurs.}   
+%
+\beqa
+  M\dot{x} & = & \frac{ 2 \eta }{ 15 \left( 1 - e_t^2 \right) } 
+  \left( 96 + 292 e_t^2 + 37e_t^4 \right) x^5 
+  + \dot{x}_{\mathrm{1PN}} x^6 \nonumber \\
+  & + & \dot{x}_{\mathrm{1.5PN}} x^{13/2}
+  + \dot{x}_{\mathrm{2PN}} x^7 + \mathcal{O}(x^{15/2}), \label{Mdxdt} \\
+%
+  M\dot{e_t} & = & \frac{ -e_t \eta }{ 15 \left( 1 - e_t^2 \right)^{7/2} } 
+  \left( 304 + 121 e_t^2 \right) x^4 
+  + \dot{e}_{\mathrm{1PN}} x^5  \nonumber \\
+  & + & \dot{e}_{\mathrm{1.5PN}} x^{11/2} + \dot{e}_{\mathrm{2PN}} x^{6}
+  + \mathcal{O}(x^{13/2}), \label{Mdedt} 
+\eeqa
+%
+where \( \eta \equiv \mu / M = m_1 m_2 / (m_1 + m_2)  \).
+Again, we refer our readers to the appendix of Ref.~\cite{Hinder:2008kv}
+where they may find the complete expressions of PN coefficients. 
+In the adiabatic approximation, there PN coefficients are independent
+of $u$, and thus can be solved independently of the Kepler Equation. We
+use a 4th order Runge-Kutta-Fehlberg (RKF-45) with adaptive step-size control to
+numerically solve the radiation reaction ODE system at each time $t >
+t_0$. Once $x(t)$ and $e(t)$ are obtained, we substitute their values
+into \eqref{MeanMotion} and solve the ODE for $l(t)$. This value is
+then equated to the RHS of \eqref{PnKepler}, giving us our PN
+Kepler Equation. We then solve the PN Kepler Equation using
+the Mikkola root finding method \cite{1987CeMec..40..329M}. 
+The values of $x$, $e_t$, and $u$ are
+then substituted into the conservative equations for $r$ and
+$\dot{\phi}$. The value of $\dot{r}$  is obtained numerically using a
+five-point stencil method and the phase $\phi$ is numerically integrated
+using the RKF-45. Repeating this process, we obtain the dynamics
+$(r,\, \dot{r},\, \phi,\, \dot{\phi})$ at each time $t>t_0$.
+
+% Sub-Section: Eccentric Binary Waveforms
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Eccentric Binary Waveforms}
+\label{s:EccentricWaveforms}
+
+Let us now discuss the eccentric waveforms that we used for our signals
+in the template bank simulations. In this study, we restrict ourselves
+to the dominant harmonic only.  
+The leading order time domain gravitational-wave
+polarizations are given by the following expressions:
+%
+\bs
+\beqa
+  h_+ &=& \frac{-M\eta}{R}\, \biggl \{ 
+    (1+{\cos}^2 \iota) 
+      \biggl [ 
+        \biggl ( \frac{M}{r} + r^2 \dot{\phi}^2 - \dot r^2 
+        \biggr ) 
+      \cos2\phi \no 
+      &+& 2 r \dot r \dot{\phi} \, \sin 2\phi
+      \biggr ] + \,
+      \biggl [ 
+        \frac{M}{r} -r^2 \dot{\phi}^2 -\dot r^2 
+      \biggr ]
+    \biggr \} \,, \label{hplus} \\
+%
+  h_{\times} &=& \frac{-2 M \eta}{R} \cos\iota\, \biggl \{
+    \biggl ( 
+      \frac{M}{r} + r^2 \dot{\phi}^2 - \dot{r}^2
+    \biggr ) 
+    \sin2\phi \no
+    && - 2 r \dot{r} \dot{\phi} \cos2\phi 
+    \biggr \}\,, \label{hcross}
+\eeqa
+\es
+%
+where  $R$ is the radial distance of binary, and $\iota$ is the inclination angle of the orbital plane of
+the binary measured from the line of sight \cite{Damour:2004bz,
+Thorne:1987af}. The full waveform $h(t)$ is a linear combination of the
+$+$ and $\times$ polarizations:
+%
+\beqa
+  h(t) &=& F_{+}(\theta,\,\varphi,\psi) h_{+}(t;\, \iota,\, \beta) \no
+    &+& F_{\times}(\theta,\,\varphi,\psi) h_{\times}(t;\, \iota,\, \beta)
+  \label{hoft}
+\eeqa
+%
+where $F_+$ and $F_{\times}$ are the beam-pattern factors of the
+detector and $\beta$ is the other Euler angle of the source
+\footnote{We set $\beta=0$}. For ground based intereferometers, the beam factors are
+expressed in terms of the Euler angles for the detector $(\theta,\,
+\varphi)$  and the Euler angle of the polarization plane $\psi$.
+Following the convention of Ref.~\cite{Thorne:1987af}, the expressions for
+the beam-pattern factors read
+%
+\bs
+\begin{align}
+F_{+}(\theta,\varphi,\psi) &= \frac{1}{2} \left(1+{\cos}^2\theta\right) \cos2\varphi           
+\cos2\psi \no
+&-\cos\theta \sin2\varphi \sin 2\psi, \\
+F_{\times} (\theta,\varphi,\psi) &= \frac{1}{2}\left(1+{\cos}^2\theta\right)+\cos\theta
+\cos2\varphi\cos2\psi
+\end{align}
+\es
+%
+In computing the waveforms, we set the angles such that the binary is
+optimally orientated for the $+$ polarization mode; i.e, we set
+$F_{+}=1$ and $F_{\times}=0$. 
+
+%
+\begin{figure}[htpb]
+\includegraphics[width=\linewidth]{figures/figure01_bL}
+%\includegraphics[scale=0.32]{figure01_bL}
+\caption{ \label{fig:waves} Plots of a $1.4\,:\,10.0\, M_{\odot}$ 
+gravitational wave signal with
+3PN conservative dynamics and 2PN radiative dynamics showing the effect
+of eccentricity on the waveform.
+The top panel shows the circular waveform, which displays the usual
+characteristics of a chirp: monotonic increase in amplitude and
+frequency with time. The second panel shows the same system but with
+$e_0 = 0.1$. In the third panel, where  $e_0 = 0.4$, illustrates the
+decrease in duration with initial eccentricity. Each waveform is
+initiated at $f_{ \mathrm{gw} } = 40$ Hz and terminated at the ISCO
+frequency. } 
+\end{figure}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section: Data Analysis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Data Analysis}
+\label{s:DataAnalysis}
+
+ So far we have limited ourselves to discussing the dynamics of
+eccentric binary systems, instead of the implications for detecting these
+systems.  We now turn to the question of whether ground based detectors,
+such as LIGO, can detect eccentric binaries using circular templates. 
+LIGO currently uses 2PN TaylorF2 circular templates to search
+for coalescing compact binaries in the mass range $M \leq 35 M_{\odot}$
+\cite{Abbott:2009tt}. These templates 
+use the stationary phase approximation (SPA) to obtain a Fourier domain
+signal of the form
+%
+\beq
+\tilde{h}(f) = A(f) f^{-7/6} e^{ i \left( \Psi(f) - \pi/4 \right) },
+\eeq 
+%
+where $\Psi(f)$ is the Fourier phase \cite{Damour:2000zb, Babak:2006ty}.
+The SPA templates are desirable becuase they have a direct analytic
+frequency domain representation and they are inexpensive to compute.
+
+% Sub-Section: Template Bank
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Template Bank Description}
+\label{s:TheBank}
+  %In this section we describe some of the basic elements of the template bank
+  In this section we describe the template bank
+used in our simulations. The template wavefomrms are
+frequency-domain stationary phase approximation templates of the form
+%
+\beq
+\tilde{h}(f) = A(f) f^{-7/6} e^{ i \left( \Psi(f) - \pi/4 \right) },
+\eeq 
+%
+where $A(f)$ is an amplitude term, $\Psi(f)$ is a Fourier phase which
+includes the post-Newtonian
+terms \cite{Damour:2000zb, Babak:2006ty}.
+The template waveforms are arranged hexagonally \cite{hexagonal} 
+to cover the mass range $ 1 \leq m_1,\,m_2 \leq 35$ subject to $ M \leq
+35 $. The template waveforms, denoted by $h$, are normalized such that 
+$ \bra h \mid h \ket  = 1,$ where $\bra\,\mid\,\ket$ denotes the matched filtering
+inner-product. Given a signal $s(t)$ and template $h(t)$ having
+well defined fourier transforms, we define the matched-filtering
+inner product as 
+%
+\beqa
+  \bra s \mid h \ket & = & 2\, \Re \int_{0}^{\infty} \ud f\,
+    \frac{ {\tilde{s}}^*(f) \tilde{h}(f) +
+      \tilde{s}(f) {\tilde{h}}^*(f) }
+           { S_n (|f|) }, \no
+%
+        & = & 4 \, \Re \int_{0}^{\infty} \ud f\, 
+    \frac{ {\tilde{s}}^*(f) \tilde{h}(f) }
+     { S_n (|f|) },  
+  \label{InnerProduct}
+\eeqa
+%
+where $\tilde{s}(f)$ denotes the Fourier transform of $s(t)$, 
+\beq
+  \tilde{s}(f) = \int_{-\infty}^{\infty} \ud t\, e^{-2\pi i f t} s(t),
+\eeq
+and $S_n(|f|)$ is the one-side noise power spectral
+density (PSD) of the detector. 
+The template parameters are divided into two categories: extrinsic and
+intrinsic. The extrinsic parameters are those which can be maximized
+without the need of a template bank.
+The extrinsic parameters in our model are the time-of-arrival
+parameter, $t_C$, and phase-of-arrival parameter denoted $\phi_C$
+The intrinsic parameters of the templates are their
+the chirptimes $\tau_0$ and $\tau_3$ \cite{Babak:2006ty}.
+The pairs $(\tau_0,\,\tau_3)$ may be inverted to obtain the mass
+parameters $(\mathcal{M},\, \eta)$ of the template.  
+The template parameters are thus given by the set of values
+%
+\beq
+ \vec{\theta} = ( t_C,\, \phi_C;\, \tau_0,\, \tau_3 ).
+\eeq
+%
+%that ``picks out'' the frequencies at which the instrument
+%is most sensitive. 
+%
+Using Eq.~\eqref{InnerProduct}, we define the overlap function $M$, as
+the maximum of over the extrinsic parameters of the normalized signals,
+%
+\beqa
+   M & = & \max_{ t_C,\,\phi_C } \,
+     \frac{ \bra s \mid h \ket }{ \sqrt{ \bra s \mid s \ket \bra h \mid h \ket } }, \no 
+%
+     & = & \max_{ t_C,\,\phi_C }\, \bra \vs \mid \vh \ket,
+  \label{Match}
+\eeqa
+\cite{Owen:1995tm, Owen:1998dk}.
+The maximization over the extrinsic
+parameters $t_C$ and $\phi_C$ is accomplished using an FFT
+\cite{Owen:1995tm}. 
+%We note that the inner product above is well defined over the function space of signals obeying the Dirichlet conditions and having unit norm.
+%The intrinsic parameters of the template are those which are searched over.
+The templates are spaced
+such that the loss in signal in no greater than a minimal match
+\cite{Lindblom:2008cm} of 0.97.
+The fitting factor $\FF$, \cite{Apostolatos:1994mx}
+quantifies loss in signal-to-noise ratio (SNR) due to
+filtering a signal with template that is not an optimal filter
+\cite{Apostolatos:1994mx}.
+The loss in event rate incurred by
+non-optimal filtering is proportional to $1-{\FF}^3$, meaning a 3\%
+decrease in $\FF$ gives about 10\% loss in events.
+
+The is $\FF$ obtained by
+maximizing the match function over a (continuous) set of intrinsic template parameters 
+$\{ \vartheta^{\,b} \}$,
+%
+\beq
+  \bar{\mathcal{F}} = \max_{\mathcal{M},\, \eta} \max_{ t_C, \, phi_C}  
+              \bra \hat{s} \mid \hat{h} \ket\,.
+  \label{FitFact}
+\eeq
+%
+In our simulations the relavent quantitiy is the bank maximized fitting
+factor. Following Ref.~\cite{Lindblom:2008cm}, we define the \emph{effective
+fitting factor} $\bar { \mathcal{F} } $
+\beq
+  \bar { \mathcal{F} } = \max_{ \hat{h}\,\in\,\mathrm{bank} } \bra
+\hat{s} \, \mid \, \hat{h} \ket
+  \label{EffFitFact}
+\eeq
+  The function $\bar { \mathcal{F} }$ provides a measure of the
+how effective the waveforms used to construct template bank are at
+capturing a signal $s$.
+The distribution of $\bar { \mathcal{F} }$ also isolates the region
+of the parameter space where the mismatch is less than the
+required threshold value.
+%We will use Eqs.~(\eqref{Match},\,\eqref{Mbank}) to discuss our simulations in Sec.~\ref{s:Results}.
+
+% Sub-Section: Simulation Parameters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Simulation Parameters}
+\label{s:SimulationParameters}
+
+%(\tau_0, tau_3) with a minimal match criterion of 97\%. 
+We set the lower frequency cut $f_L$ for the templates at 40 Hz for
+initial LIGO (iLIGO) and 10 Hz for advanced LIGO (advLIGO). 
+The upper frequency cut-off $f_U$ for the
+templates is set to 2048 Hz. The mass range of the template bank is
+the same as the range for the low mass search \cite{Abbott:2009tt}, namely
+$ 1 \leq M/M_{\odot} \leq 35 $. The sampling rate is set to 4096 Hz. 
+% chosen to be the frequency corresponding to the Schwarzschild innermost stable orbit
+% orbit of a particle in a Schwarzschild space-time.
+The templates are hexagonally spaced so that the minimal match is
+no less than 97\% \cite{Babak:2006ty,Owen:1995tm,Owen:1998dk}. 
+We ran the bank simulation code (cite LAL?) with the TaylorF2 templates at 2.0PN and
+3.5PN.
+The signals are the $x$-based eccentric waveforms given in
+Eqs.~(\eqref{hplus},\,\eqref{hcross}) at 3PN in the conservative
+dynamics and 2PN in the radiative dynamics. The number of injections in
+the iLIGO bank simulations was $10\,026$. The mass range of the signals
+was  $ 1 \leq M/M_{\odot} \leq 15 $, which is justified by the decrease in
+duration due to the presence of eccentricity \cite{Martel:1999tm, Cokelaer:2009hj}. 
+The range of initial eccentricities is $ 0 \leq e_0 \leq 0.4 $. The
+cutoff frequency of the eccentric signals is set the the Schwarzschild
+innermost stable circular orbit (ISCO), $f_{\mathrm{isco}} = 1 / \left(6
+\sqrt{6} \pi M\right)$
+
+% *** template bank parameters: initial LIGO ***
+% f_min = 40.0 Hz
+% f_max = 2048.0
+% N     = 1048576
+% dt    = 1.0/4096.0
+% overlap = .97
+% low_mass = 1.0
+% total_mass_high = 35.0
+% 
+% *** signal parameters *** 
+% mtotal <= 15.0
+% f_min = 40.0 Hz
+% f_max = f_isco
+% all angles = 0.0 (optimal h_+)
+% dt = 1./4096. 
+% ode_eps = 1.0e-16, 1.0e-12, 1.0e-08 (depending on masses and ecc)
+% ecc in range (0,0.4)
+% N_injections = 10,025 for 3.5PN sim  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section: Results
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+\label{s:Results}
+We split the discussion of our results into two parts.
+parts.  First, we present in Sec.~\ref{s:iLIGOResults} the results of our
+simulations using the initial LIGO noise spectrum. 
+
+% Sub-Section: Initial LIGO Results 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Results for Initial LIGO}
+\label{s:iLIGOResults}
+In this section we present the results of our
+template bank simulations wherin the initial LIGO noise PSD
+was used for $S_n(f)$. The expression PSD (in Hz$^{-1/2}$ has the form
+%
+\beq
+   S_n(f) = (4.49 x)^{-56} + 0.16 x^{-4.52} + 0.52 + 0.32 x^2,
+\eeq
+%
+where $x = f/150$ and $f$ is the frequency in Hz.
+% this is qm's ligo_psd( f ) 
+%I need some more information, becuase this gets multiplied by 
+% 9.0e-46 * DYN_RANGE_FAC * DYN_RANGE_FAC to give the actual number for 
+% a given frequency
+
+To understand the degree to which eccentricity affects the
+characteristics of the waveform, we investigated the
+overlap as a function of eccentricity using a circular $x$-model signal
+as our ``template''.  In Fig.~\ref{fig:SELFolaps} we present the results
+of the overlap computations for three different mass ratios.  The
+overlaps tend to be more sensitive to eccentricity for smaller mass
+systems. The
+curves displayed in Fig.~\ref{fig:SELFolaps} are best understood in
+terms of how the duration of the signal is influenced by the total mass
+$M$ and the initial eccentricity $e_0$.  It is evident from
+Fig.~\ref{fig:waves}, that higher eccentricities lead to shorter
+waveforms for a given mass ratio.  Increasing the mass of the system
+also decreases the duration of waveform. 
+%
+\begin{figure}[htpb]
+\includegraphics[width=\linewidth]{figures/match_SELF}
+\caption{ \label{fig:SELFolaps} The overlap $(s_{e\,=\,0}\,|s)$ for three
+systems having total masses
+$ (1.4 + 1.4) M_{\odot},\, (1.4 + 5.0) M_{\odot} $ and $(1.4 + 10)
+M_{\odot} $.
+Here, $s_{ e\,=\,0 }$ denote the circular ``template'' and $s$ is the $x$-model
+eccentric signal. The higher mass system is less effected by
+eccentricity because the shortening of the duration due to the
+eccentricity is offset by inherent decrease in duration with increased
+mass. However, the two effects are not close enough in magnitude to
+cancel out one another. Thus, higher eccentricities lead to a de-phasing
+which results in a low overlap. }
+\end{figure}
+%
+% Discussion of Overlap Plots
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Now, let us discuss the results of the match computations in which we
+only maximized over the extrinsic quantities $t_C$ and $\phi_C$.  We
+calculated the match integral for $e_0 \in [0,\,0.5]$ for mass ratios
+$(1.4 + 1.4) M_{\odot},\, (1.4 + 5.0) M_{\odot},\,$ and $(1.4 + 10) M_{\odot}$. 
+For the 2PN SPA templates, we find that
+the $x$-model disagrees with the SPA model over the whole range of
+eccentricities.  Notice, however, that the value of $M$ increases with
+increasing mass. This is because higher masses have shorter signal
+durations and the presence of \ecc decreases the length of the inspiral 
+\cite{Peters:1963ux, Peters:1964zz, Martel:1999tm}. In the case of the
+3.5PN SPA templates, the matches are slightly improved, but are still
+especially poor for the 1.4+1.4 system.  The 1.4+5.0 system matches the
+SPA quite well when $e_0 \leq 0.01 $, with $M \sim 95\% $. 
+
+%
+\begin{figure}[htpb]
+\includegraphics[width=\linewidth]{figures/match_SPA}
+\caption{\label{fig:SPAolaps} The match integral $M$ is 
+shown as a function of initial eccentricity
+for three different configurations of the component masses.
+The upper plot shows the match of the eccentric signal against the 2PN
+SPA waveforms for $h$ and 3.5PN templates are used in the lower plot.
+Notice that the effect of eccentricity is less severe for 3.5PN
+templates than the 2PN templates.}
+\end{figure}
+%
+
+% Discussion of Contour Plots
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Now we present the results of the template bank simulations, for which
+we optimize over the full bank to get the best match. 
+In Fig.~\ref{fig:match2p0Mt}, we show contours of constant $M_B$ in the
+$(M,e_0)$ plane for the 2PN run. Notice that we have gained a significant
+amount in overlap from the bank simulation. 
+With the 2PN templates, the region of the parameter space
+where the (bank maximized) match is 96\% or better is $M/M_{\odot} \geq
+3.5$ and $ e_0 \leq 0.05 $. In Fig.~\ref{fig:match3p5Mt}, we show the
+distribution of $M_B$ for the simulation using the 3.5PN template bank.
+Interestingly, the 3.5PN bank does not do as well as the 2PN bank,
+despite the fact that
+the 3.5PN un-maximized matches were higher than the 2PN (see
+Fig.~\ref{fig:SPAolaps}).  Although the 2PN bank does better overall, the
+3.5PN bank is more efficient for low masses $M \sim M_{\mathrm{BNS}}
+\sim 2.8 M_{\odot} $.
+
+%
+\begin{figure}[htpb]
+\includegraphics[width=\linewidth]{figures/fig_2p0_Mt_CL_01}
+%\includegraphics[scale=0.32]{figure01_bL}
+\caption{\label{fig:match2p0Mt} Maximum match over the 2PN template bank
+against the eccentric signals parameterized by total mass $M$ and
+eccentricity at $f=40$ Hz $e_0$.}
+\end{figure}
+%
+\begin{figure}[htpb]
+\includegraphics[width=\linewidth]{figures/fig_3p5_Mt_CL_01}
+%\includegraphics[scale=0.32]{figure01_bL}
+\caption{\label{fig:match3p5Mt} Maximum match over the 3.5PN template bank
+against the eccentric signals parameterized by total mass $M$ and $e_0$
+eccentricity at $f=40$ Hz.}
+\end{figure}
+
+
+
+% Sub-Section: Advanced LIGO Results 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Results for Advanced LIGO}
+\label{s:advLIGOResults}
+
+
+  p = 300.0 * pow( f/15.0, -17.0 ) + 7 * pow( f/50.0, -6.0 )
+      + 24.0 * pow( x * 300.0/90.0, -3.45 )
+      - 3.5 / x2
+      + 110.0 * (1.02 - 1.08 * x2 + 0.54 * x2 * x2)/(1.0 + 0.21 * x2);
+
+\vspace{1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section: Conclusion
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+
+\acknowledgments We thank Ian Hinder, Eric Poisson, and 
+for helpful discussions on the subject of post-Newtonian modeling of 
+eccentric binaries. This work was supported by NSF grant ( ??? ).  
+
+%\bibstyle{prd}
+\bibliography{eccpaper}
+
+\newpage
+
+\appendix
+
+ % Section Consistency Check
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Consistency Check}
+\label{s:AppAcheck}
+In this appendix we give a brief summary of the checks we
+performed on our code. Our main consistency check was the reproduction
+of the results of Refs.~\cite{Martel:1999tm}. 
+To do this, we wrote a double precision 
+\footnote{The results of Ref.~\cite{Martel:1999tm} were obtained using single
+precision arithmetic, resulting in large accumulation of phase error.
+Regardless, their qualitative conclusions have been shown to hold
+\cite{Cokelaer:2009hj}.}
+evolution code to numerically solve the ODE system given in
+Ref.~\cite{Martel:1999tm}, which we will call the $p$-model in reference
+to variable $p$ used in their ODE system, at double precision. Using the phase
+evolution, we computed the leading order (``restricted'')
+waveforms given in Ref.~\cite{Wahlquist:1987rx}. We then computed the overlaps
+between the Newtonian order waveforms obtained using the x-model and
+the waveforms using the model in Ref.~\cite{Martel:1999tm} 
+In our comparisons we choose to use only the dominant harmonic. We
+find excellent agreement (see figure olap\_x00VSp\_2.8msun.png for
+qm.td\_td\_match overlaps and figure FFs\_xmod00\_pmod\_0spa for fitting factors against
+the SPA waveforms)                         
+
+\end{document} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Notes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   __BANKSIMS__ 
+%
+% - The method of matched filtering is employed becuase we have a good
+%   idea of what the signals should look like for inspirals
+% - Gaussian Noise is noise with a normal distribution  
+% - template banks cover the parameter space becuase we don't apriori
+%   know the signal is.
+% - We use Taylor F2 (frequency domain) SPA templates 
+% - template bank construction uses a metric to place
+%   templates.  This is known to 2PN, although the templates are known
+%   to 3.5PN.
+% - intrinsic params are (m1,m2) <--> (Mchirp,eta) <--> (tau0,tau3)
+%
+%
+% PARAMETERS FOR BANKSIM CODE
+% *** template bank parameters: initial LIGO ***
+% f_min = 40.0 Hz
+% f_max = 2048.0
+% N     = 1048576
+% dt    = 1.0/4096.0
+% overlap = .97
+% low_mass = 1.0
+% total_mass_high = 35.0
+% 
+% *** signal parameters *** 
+% mtotal <= 15.0
+% f_min = 40.0 Hz
+% f_max = f_isco
+% all angles = 0.0 (optimal h_+)
+% dt = 1./4096. 
+% ode_eps = 
+% ecc in range (0,0.4)
+% N_injections = 10,025 for 3.5PN sim
+
+
+
+
+% CHOPPED MATERIAL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Let us consider a deterministic signal $s(t)$ of known form and assume
+%that it is contained in
+%the detector output $o(t)$ such that $ o(t) = s(t) + n(t) $, where $n(t)$ is
+%a non-deterministic function of time 
+% i.e. a random process with spectral density $S_n(f)$
+%characterizing the noise content in the
+%output.  For simplicity, we take $n(t)$ to be stationary Gaussian
+%noise. If $s$ is taken to be a gravitational-wave signal, the we must
+%also introduce a set of k parameters $ \{ \vta \}_{\,a=0,\,\ldots,\,k-1} $ that determine the
+%signal content. The problem we face is that the signal parameters are not
+%known a priori.  However, we do have information about the range of
+%possible values for the signal parameters. To solve the problem, we
+%construct a large collection of template waveforms to cover
+%parameter space called a template bank. 
+%More formally, a template bank $\mathcal{T}$ is a
+%discrete space represented by a set of model waveforms
+%$ \{ h( t; \, \vta_j) \}_{\,j=0,\,1\,\ldots,\,N_B - 1} $, where
+%$ \vta_j $ is the set of signal parameters characterizing the
+%$ j^{ \text{th} } $ template, and $N_B$ is the total number of templates
+%in the bank \cite{Babak:2006ty, Cokelaer:2009hj, Owen:1995tm, Owen:1998dk}.
+% A continuous signal space is defined
+% formally as the set of all signal vectors sampled in a continuous way
+% and having parameters $\{\vartheta^a\}_{A\in \mathbb{R}}$, 
+
+%
+\bs
+\beqa
+  \tau_0 &=& \frac{ 5 }{ 256 \pi f_L \eta } \left(\pi M f_L
+    \right)^{-5/3} \,, \label{tau0} \\
+%
+  \tau_3 &=& \frac{ 1 }{ 8 f_L \eta } \left(\pi M f_L \right)^{-2/3}
+    \label{tau3}.
+\eeqa
+\es
+%
+%where $\Psi(f)$ is the Fourier phase \cite{Damour:2000zb, Babak:2006ty}.
+%The SPA templates are desirable becuase they have a direct analytic
+%frequency domain representation and they are inexpensive to compute. 
+%\beq
+%(s|h)=4\Re \int_{0}^{\infty}df\,\frac{{\tilde{s}}^*(f)\tilde{h}(f)}{S_n(|f|)},
+%\eeq
+%Using the equation for the matched-filtering inner product,
+%
+% note: FFT maximizes the t_C parameter what about \phi_C
+%The quantity $(\vs|\vh)$ is often referred to as the overlap integral \cite{Damour:2000zb}
+% An optimal filter is one whose inner-product with the template is less than one.  
+%2PN TaylorF2 circular templates to search
+%for coalescing compact binaries in the mass range $M \leq 35 M_{\odot}$
+%\cite{Abbott:2009tt}. These templates 
+%use the stationary phase approximation (SPA) to obtain a Fourier domain
+%signal of the form
+  M_B( s ( \vartheta^{\,a} ), \, h ( \vartheta^{\,b} ) ) = 
+    \max_{i\, \in\, [0,\,N_B-1]} \,
+    M( s( \vartheta^{\,a} ),\, h( \vartheta^{\,b}_i ) ) 
+%
